@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reza Eka Firmansyah — Network Engineer & IT Support</title>
+  <meta name="description" content="Portfolio profesional Reza Eka Firmansyah, Network Engineer & IT Support, Student Staff di Pusat Teknologi Informasi (PuTI) Telkom University Surabaya." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome (logogram icons only) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            cyan: {
+              400: '#22d3ee',
+              500: '#06b6d4',
+            },
+            slate: {
+              850: '#0f172a',
+              950: '#020617',
+            },
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.7s ease forwards',
+            'pulse-slow': 'pulse 3s ease-in-out infinite',
+            'border-spin': 'borderSpin 4s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%':   { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%':      { transform: 'translateY(-12px)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* ─── Base Reset & Body ──────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #020617;
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+
+    /* ─── Scrollbar ──────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #22d3ee55; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #22d3ee99; }
+
+    /* ─── Selection ──────────────────────────────────── */
+    ::selection { background: #22d3ee33; color: #22d3ee; }
+
+    /* ─── Noise texture overlay ──────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* ─── Grid background ────────────────────────────── */
+    .bg-grid {
+      background-image:
+        linear-gradient(rgba(34,211,238,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,211,238,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ─── Glow Orbs ──────────────────────────────────── */
+    .orb {
+      position: fixed;
+      border-radius: 9999px;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform;
+    }
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(34,211,238,0.12) 0%, transparent 70%);
+      top: -100px; left: -100px;
+    }
+    .orb-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(99,102,241,0.10) 0%, transparent 70%);
+      bottom: 10%; right: -80px;
+    }
+
+    /* ─── Glassmorphism Card ─────────────────────────── */
+    .glass {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(34, 211, 238, 0.12);
+      border-radius: 16px;
+    }
+
+    .glass-card {
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(34, 211, 238, 0.1);
+      border-radius: 12px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(34, 211, 238, 0.35);
+      box-shadow: 0 0 24px rgba(34, 211, 238, 0.08), 0 8px 32px rgba(0,0,0,0.4);
+      transform: translateY(-3px);
+    }
+
+    /* ─── Navbar ─────────────────────────────────────── */
+    #navbar {
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(34,211,238,0.1);
+    }
+
+    .nav-link {
+      position: relative;
+      color: #94a3b8;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, #22d3ee, #6366f1);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: #22d3ee; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: #22d3ee; }
+    .nav-link.active::after { width: 100%; }
+
+    /* ─── Neon Text Gradient ─────────────────────────── */
+    .text-gradient {
+      background: linear-gradient(135deg, #22d3ee 0%, #818cf8 60%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-gradient-subtle {
+      background: linear-gradient(135deg, #67e8f9 0%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── CTA Button ─────────────────────────────────── */
+    .btn-primary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #020617;
+      background: linear-gradient(135deg, #22d3ee, #6366f1);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #67e8f9, #818cf8);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(34,211,238,0.3); }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary span { position: relative; z-index: 1; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 26px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #22d3ee;
+      border: 1px solid rgba(34,211,238,0.4);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      cursor: pointer;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: rgba(34,211,238,0.08);
+      border-color: #22d3ee;
+      box-shadow: 0 0 20px rgba(34,211,238,0.15);
+    }
+
+    /* ─── Hero Avatar Ring ───────────────────────────── */
+    .avatar-ring {
+      position: relative;
+      display: inline-block;
+    }
+    .avatar-ring::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      background: conic-gradient(from 0deg, #22d3ee, #6366f1, #c084fc, #22d3ee);
+      animation: spin 4s linear infinite;
+      z-index: 0;
+    }
+    .avatar-ring::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 9999px;
+      background: #020617;
+      z-index: 1;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .avatar-inner {
+      position: relative;
+      z-index: 2;
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    /* ─── Section Divider ────────────────────────────── */
+    .section-divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, #22d3ee, #6366f1);
+      border-radius: 999px;
+      margin: 0 auto 1rem;
+    }
+
+    /* ─── Experience Timeline ────────────────────────── */
+    .timeline-item {
+      position: relative;
+      padding-left: 28px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #22d3ee, #6366f1);
+      box-shadow: 0 0 10px rgba(34,211,238,0.5);
+      flex-shrink: 0;
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 3.5px; top: 20px;
+      width: 1px;
+      height: calc(100% + 12px);
+      background: linear-gradient(to bottom, rgba(34,211,238,0.3), transparent);
+    }
+    .timeline-item:last-child::after { display: none; }
+
+    /* ─── Skill Grid Cards ───────────────────────────── */
+    .skill-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 28px 16px;
+      text-align: center;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(34, 211, 238, 0.08);
+      border-radius: 14px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      cursor: default;
+    }
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(34,211,238,0.06) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .skill-card:hover {
+      border-color: rgba(34, 211, 238, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 0 40px rgba(34,211,238,0.08), 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .skill-card:hover::before { opacity: 1; }
+
+    .skill-icon {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 14px;
+      background: rgba(34,211,238,0.08);
+      border: 1px solid rgba(34,211,238,0.15);
+      font-size: 1.6rem;
+      transition: all 0.35s ease;
+    }
+    .skill-card:hover .skill-icon {
+      background: rgba(34,211,238,0.15);
+      border-color: rgba(34,211,238,0.4);
+      box-shadow: 0 0 20px rgba(34,211,238,0.2);
+    }
+
+    /* ─── Stat Badge ─────────────────────────────────── */
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(34,211,238,0.08);
+      border: 1px solid rgba(34,211,238,0.2);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #67e8f9;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ─── Scroll Reveal ──────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Mobile Menu ────────────────────────────────── */
+    #mobile-menu {
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    #mobile-menu.open {
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    /* ─── Footer ─────────────────────────────────────── */
+    .footer-link {
+      color: #64748b;
+      transition: color 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-link:hover { color: #22d3ee; }
+
+    /* ─── Blinking cursor ────────────────────────────── */
+    .cursor-blink {
+      display: inline-block;
+      width: 3px; height: 1.1em;
+      background: #22d3ee;
+      margin-left: 4px;
+      vertical-align: middle;
+      border-radius: 1px;
+      animation: blink 1.1s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* ─── Progress bar skill ─────────────────────────── */
+    .progress-bar-track {
+      height: 4px;
+      background: rgba(34,211,238,0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #22d3ee, #6366f1);
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+
+<body class="dark bg-slate-950 text-slate-100">
+
+  <!-- Decorative Orbs -->
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════════ -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between" role="navigation" aria-label="Navigasi utama">
+      <!-- Logo / Brand -->
+      <a href="#home" class="flex items-center gap-2 group" id="nav-brand" aria-label="Reza Eka Firmansyah - Home">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-500 flex items-center justify-center font-mono font-bold text-slate-950 text-sm shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-shadow">
+          REF
+        </div>
+        <span class="font-semibold text-slate-300 text-sm hidden sm:block group-hover:text-cyan-400 transition-colors">
+          Reza Eka Firmansyah
+        </span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="hidden md:flex items-center gap-8" role="list">
+        <li><a href="#home"       class="nav-link active" id="link-home"       aria-current="page">Home</a></li>
+        <li><a href="#about"      class="nav-link"        id="link-about">About</a></li>
+        <li><a href="#experience" class="nav-link"        id="link-experience">Experience</a></li>
+        <li><a href="#skills"     class="nav-link"        id="link-skills">Skills</a></li>
+      </ul>
+
+      <!-- Contact CTA -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="mailto:rezaef666@gmail.com" class="btn-outline text-sm py-2 px-4">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <span>Kontak</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button id="hamburger-btn" class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg border border-slate-700 hover:border-cyan-500 transition-colors" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="block w-5 h-0.5 bg-slate-400 transition-all duration-300" id="ham-1"></span>
+        <span class="block w-5 h-0.5 bg-slate-400 transition-all duration-300" id="ham-2"></span>
+        <span class="block w-3.5 h-0.5 bg-slate-400 transition-all duration-300" id="ham-3"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" role="menu" aria-label="Menu mobile">
+      <ul class="max-w-6xl mx-auto mt-3 glass rounded-xl px-4 py-4 flex flex-col gap-1" role="list">
+        <li role="none"><a href="#home"       class="nav-link block py-2.5 px-3 rounded-lg hover:bg-cyan-500/5" role="menuitem">Home</a></li>
+        <li role="none"><a href="#about"      class="nav-link block py-2.5 px-3 rounded-lg hover:bg-cyan-500/5" role="menuitem">About</a></li>
+        <li role="none"><a href="#experience" class="nav-link block py-2.5 px-3 rounded-lg hover:bg-cyan-500/5" role="menuitem">Experience</a></li>
+        <li role="none"><a href="#skills"     class="nav-link block py-2.5 px-3 rounded-lg hover:bg-cyan-500/5" role="menuitem">Skills</a></li>
+        <li role="none" class="pt-2 border-t border-slate-700/50">
+          <a href="mailto:rezaef666@gmail.com" class="btn-primary w-full justify-center text-sm" role="menuitem">
+            <span><i class="fa-solid fa-envelope mr-1" aria-hidden="true"></i> Kontak Saya</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════════════════════ -->
+  <main>
+    <section id="home" class="relative min-h-screen flex items-center justify-center bg-grid overflow-hidden px-4 pt-20" aria-label="Hero Section">
+
+      <!-- Particle Canvas -->
+      <canvas id="particle-canvas" class="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true" style="z-index:1;"></canvas>
+
+      <!-- Radial glow center -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true" style="z-index:2;">
+        <div class="w-[700px] h-[700px] rounded-full" style="background: radial-gradient(circle, rgba(34,211,238,0.06) 0%, transparent 65%);"></div>
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto text-center">
+
+        <!-- Badge -->
+        <div class="flex justify-center mb-8 reveal">
+          <div class="stat-badge">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse-slow" aria-hidden="true"></span>
+            <span>Available for Opportunities</span>
+          </div>
+        </div>
+
+        <!-- Avatar -->
+        <div class="flex justify-center mb-8 reveal" style="transition-delay: 0.1s;">
+          <div class="avatar-ring" aria-hidden="true">
+            <div class="avatar-inner w-28 h-28 sm:w-32 sm:h-32">
+              <img
+                src="IMG_4192.PNG"
+                alt="Foto profil Reza Eka Firmansyah"
+                class="w-full h-full object-cover object-center"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Name -->
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight mb-4 reveal" style="transition-delay: 0.15s;">
+          <span class="text-gradient">Reza Eka</span>
+          <br class="sm:hidden" />
+          <span class="text-white"> Firmansyah</span>
+        </h1>
+
+        <!-- Role -->
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-300 mb-4 reveal font-mono" style="transition-delay: 0.2s;">
+          <span class="text-cyan-400">&gt;</span>
+          <span id="typed-text" class="text-slate-200"></span>
+          <span class="cursor-blink" aria-hidden="true"></span>
+        </h2>
+
+        <!-- Description -->
+        <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-10 reveal" style="transition-delay: 0.25s;">
+          Memastikan stabilitas infrastruktur jaringan dan memberikan solusi IT yang efisien untuk institusi pendidikan.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-4 reveal" style="transition-delay: 0.3s;">
+          <a href="#experience" class="btn-primary">
+            <span><i class="fa-solid fa-briefcase mr-1" aria-hidden="true"></i> Lihat Pengalaman</span>
+          </a>
+          <a href="#about" class="btn-outline">
+            <i class="fa-solid fa-user" aria-hidden="true"></i> Tentang Saya
+          </a>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto reveal" style="transition-delay: 0.35s;" role="list" aria-label="Statistik singkat">
+          <div class="glass-card p-4 text-center" role="listitem">
+            <p class="text-2xl font-black text-gradient">2+</p>
+            <p class="text-xs text-slate-500 mt-1 uppercase tracking-widest">Tahun Aktif</p>
+          </div>
+          <div class="glass-card p-4 text-center" role="listitem">
+            <p class="text-2xl font-black text-gradient">PuTI</p>
+            <p class="text-xs text-slate-500 mt-1 uppercase tracking-widest">Divisi</p>
+          </div>
+          <div class="glass-card p-4 text-center" role="listitem">
+            <p class="text-2xl font-black text-gradient">5+</p>
+            <p class="text-xs text-slate-500 mt-1 uppercase tracking-widest">Keahlian</p>
+          </div>
+          <div class="glass-card p-4 text-center" role="listitem">
+            <p class="text-2xl font-black text-gradient">#1</p>
+            <p class="text-xs text-slate-500 mt-1 uppercase tracking-widest">Lulusan SMK</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         ABOUT SECTION
+    ══════════════════════════════════════════════════ -->
+    <section id="about" class="py-24 px-4 relative" aria-label="Tentang Saya">
+      <div class="max-w-6xl mx-auto">
+
+        <!-- Section Header -->
+        <div class="text-center mb-16 reveal">
+          <div class="section-divider" aria-hidden="true"></div>
+          <span class="inline-block font-mono text-cyan-400 text-sm uppercase tracking-widest mb-3">01. About</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white">Tentang Saya</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+          <!-- Left: Visual Card -->
+          <div class="reveal" style="transition-delay: 0.1s;">
+            <div class="glass p-8 relative overflow-hidden">
+              <!-- Code snippet decoration -->
+              <div class="font-mono text-xs text-slate-500 mb-6 select-none" aria-hidden="true">
+                <span class="text-indigo-400">const</span>
+                <span class="text-cyan-400"> developer</span>
+                <span class="text-slate-400"> = {</span>
+              </div>
+
+              <!-- Info rows -->
+              <ul class="space-y-4 font-mono text-sm" role="list">
+                <li class="flex items-start gap-3" role="listitem">
+                  <span class="text-indigo-400 w-20 shrink-0 font-semibold">name</span>
+                  <span class="text-slate-400">:</span>
+                  <span class="text-cyan-300">"Reza Eka Firmansyah"</span>
+                </li>
+                <li class="flex items-start gap-3" role="listitem">
+                  <span class="text-indigo-400 w-20 shrink-0 font-semibold">role</span>
+                  <span class="text-slate-400">:</span>
+                  <span class="text-cyan-300">"Network Eng & IT Support"</span>
+                </li>
+                <li class="flex items-start gap-3" role="listitem">
+                  <span class="text-indigo-400 w-20 shrink-0 font-semibold">campus</span>
+                  <span class="text-slate-400">:</span>
+                  <span class="text-green-400">"Telkom Univ. Surabaya"</span>
+                </li>
+                <li class="flex items-start gap-3" role="listitem">
+                  <span class="text-indigo-400 w-20 shrink-0 font-semibold">angkatan</span>
+                  <span class="text-slate-400">:</span>
+                  <span class="text-purple-400">2023</span>
+                </li>
+                <li class="flex items-start gap-3" role="listitem">
+                  <span class="text-indigo-400 w-20 shrink-0 font-semibold">unit</span>
+                  <span class="text-slate-400">:</span>
+                  <span class="text-green-400">"PuTI (Student Staff)"</span>
+                </li>
+                <li class="flex items-start gap-3" role="listitem">
+                  <span class="text-indigo-400 w-20 shrink-0 font-semibold">joinedPuTI</span>
+                  <span class="text-slate-400">:</span>
+                  <span class="text-orange-400">"Oktober 2025"</span>
+                </li>
+                <li class="flex items-start gap-3" role="listitem">
+                  <span class="text-indigo-400 w-20 shrink-0 font-semibold">award</span>
+                  <span class="text-slate-400">:</span>
+                  <span class="text-yellow-400">"Lulusan Terbaik SMK"</span>
+                </li>
+                <li class="flex items-start gap-3" role="listitem">
+                  <span class="text-indigo-400 w-20 shrink-0 font-semibold">status</span>
+                  <span class="text-slate-400">:</span>
+                  <span class="text-cyan-400">true</span>
+                  <span class="text-slate-500 text-xs ml-1">// open to work</span>
+                </li>
+              </ul>
+
+              <div class="font-mono text-xs text-slate-500 mt-6 select-none" aria-hidden="true">
+                <span class="text-slate-400">}</span>
+              </div>
+
+              <!-- Decorative corner glow -->
+              <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-cyan-400/5 blur-2xl pointer-events-none" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <!-- Right: Text Content -->
+          <div class="space-y-6 reveal" style="transition-delay: 0.2s;">
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+              Mahasiswa <span class="text-cyan-400 font-semibold">Teknologi Informasi</span> Fakultas Informatika
+              angkatan <span class="text-purple-400 font-semibold">2023</span> di
+              <span class="text-cyan-400 font-semibold">Telkom University Surabaya</span>. Berbekal kedisiplinan sebagai
+              <span class="text-yellow-400 font-semibold">Lulusan Terbaik</span> tingkat SMK, saya
+              <span class="text-green-400 font-semibold">direkrut</span> sebagai Student Staff di unit
+              <span class="text-cyan-400 font-semibold">Pusat Teknologi Informasi (PuTI)</span> kampus
+              sejak <span class="text-orange-400 font-semibold">Oktober 2025</span>,
+              mengemban peran di divisi Network Engineer sekaligus IT Support.
+            </p>
+            <p class="text-slate-400 text-base leading-relaxed">
+              Kekuatan utama saya adalah kemampuan memadukan <span class="text-white font-medium">keahlian teknis</span> dengan
+              <span class="text-white font-medium">komunikasi interpersonal yang empatik</span> untuk menjembatani kendala
+              teknis bagi user non-teknis.
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2 pt-2" role="list" aria-label="Teknologi yang dikuasai">
+              <span class="stat-badge" role="listitem"><i class="fa-solid fa-network-wired text-xs" aria-hidden="true"></i> Networking</span>
+              <span class="stat-badge" role="listitem"><i class="fa-solid fa-cloud text-xs" aria-hidden="true"></i> Cloud Mgmt</span>
+              <span class="stat-badge" role="listitem"><i class="fa-solid fa-shield-halved text-xs" aria-hidden="true"></i> Cybersecurity</span>
+              <span class="stat-badge" role="listitem"><i class="fa-solid fa-headset text-xs" aria-hidden="true"></i> IT Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         EXPERIENCE SECTION
+    ══════════════════════════════════════════════════ -->
+    <section id="experience" class="py-24 px-4 relative" aria-label="Pengalaman Profesional">
+      <!-- Subtle bg accent -->
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/30 to-transparent pointer-events-none" aria-hidden="true"></div>
+
+      <div class="max-w-6xl mx-auto relative">
+
+        <!-- Section Header -->
+        <div class="text-center mb-16 reveal">
+          <div class="section-divider" aria-hidden="true"></div>
+          <span class="inline-block font-mono text-cyan-400 text-sm uppercase tracking-widest mb-3">02. Experience</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white">Pengalaman Profesional</h2>
+        </div>
+
+        <!-- Experience Card -->
+        <div class="max-w-3xl mx-auto reveal" style="transition-delay: 0.1s;">
+          <div class="glass p-6 sm:p-8">
+
+            <!-- Job Header -->
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400/20 to-indigo-500/20 border border-cyan-400/20 flex items-center justify-center">
+                    <i class="fa-solid fa-building-columns text-cyan-400 text-sm" aria-hidden="true"></i>
+                  </div>
+                  <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse-slow" title="Posisi aktif" aria-label="Posisi aktif"></div>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-white leading-snug">
+                  Student Staff — Network Engineer & IT Support
+                </h3>
+                <p class="text-cyan-400 font-semibold mt-1 text-sm sm:text-base">
+                  Pusat Teknologi Informasi (PuTI) — Telkom University Surabaya
+                </p>
+              </div>
+              <div class="shrink-0">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-300 text-xs font-mono">
+                  <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+                  Oktober 2025 — Sekarang
+                </span>
+              </div>
+            </div>
+
+            <!-- Responsibilities -->
+            <ul class="space-y-5" role="list" aria-label="Tanggung jawab pekerjaan">
+              <!-- Item 1 -->
+              <li class="timeline-item" role="listitem">
+                <div class="glass-card p-4 ml-4">
+                  <div class="flex items-center gap-2 mb-1">
+                    <i class="fa-solid fa-diagram-project text-cyan-400 text-sm" aria-hidden="true"></i>
+                    <h4 class="font-semibold text-white text-sm">Pengembangan Infrastruktur IT</h4>
+                  </div>
+                  <p class="text-slate-400 text-sm leading-relaxed">
+                    Terlibat aktif dalam siklus perancangan arsitektur jaringan hingga eksekusi fisik, memastikan infrastruktur kampus beroperasi optimal.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Item 2 -->
+              <li class="timeline-item" role="listitem">
+                <div class="glass-card p-4 ml-4">
+                  <div class="flex items-center gap-2 mb-1">
+                    <i class="fa-solid fa-chart-line text-cyan-400 text-sm" aria-hidden="true"></i>
+                    <h4 class="font-semibold text-white text-sm">Analisis Trafik & Pemantauan</h4>
+                  </div>
+                  <p class="text-slate-400 text-sm leading-relaxed">
+                    Memonitor stabilitas koneksi via dasbor manajemen cloud untuk mencegah bottleneck dan memastikan uptime jaringan tetap tinggi.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Item 3 -->
+              <li class="timeline-item" role="listitem">
+                <div class="glass-card p-4 ml-4">
+                  <div class="flex items-center gap-2 mb-1">
+                    <i class="fa-solid fa-ticket text-cyan-400 text-sm" aria-hidden="true"></i>
+                    <h4 class="font-semibold text-white text-sm">Layanan IT Support & Ticketing</h4>
+                  </div>
+                  <p class="text-slate-400 text-sm leading-relaxed">
+                    Merespons dan menyelesaikan kendala hardware/software user secara cepat dan terstruktur melalui sistem tiket.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Item 4 -->
+              <li class="timeline-item" role="listitem">
+                <div class="glass-card p-4 ml-4">
+                  <div class="flex items-center gap-2 mb-1">
+                    <i class="fa-solid fa-comments text-cyan-400 text-sm" aria-hidden="true"></i>
+                    <h4 class="font-semibold text-white text-sm">Komunikasi Teknis Adaptif</h4>
+                  </div>
+                  <p class="text-slate-400 text-sm leading-relaxed">
+                    Menerjemahkan akar masalah teknis menjadi solusi berbahasa sederhana yang mudah dipahami oleh pengguna non-teknis.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Item 5 -->
+              <li class="timeline-item" role="listitem">
+                <div class="glass-card p-4 ml-4">
+                  <div class="flex items-center gap-2 mb-1">
+                    <i class="fa-solid fa-shield-halved text-cyan-400 text-sm" aria-hidden="true"></i>
+                    <h4 class="font-semibold text-white text-sm">Keamanan & Inventarisasi</h4>
+                  </div>
+                  <p class="text-slate-400 text-sm leading-relaxed">
+                    Mengaplikasikan prinsip dasar keamanan siber dan mengelola audit inventaris hardware secara berkala.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         SKILLS SECTION
+    ══════════════════════════════════════════════════ -->
+    <section id="skills" class="py-24 px-4 relative" aria-label="Keahlian dan Teknologi">
+      <div class="max-w-6xl mx-auto">
+
+        <!-- Section Header -->
+        <div class="text-center mb-16 reveal">
+          <div class="section-divider" aria-hidden="true"></div>
+          <span class="inline-block font-mono text-cyan-400 text-sm uppercase tracking-widest mb-3">03. Skills</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white">Keahlian & Teknologi</h2>
+          <p class="text-slate-500 mt-3 max-w-md mx-auto text-sm">Kompetensi inti yang saya kuasai di bidang infrastruktur jaringan dan IT Support.</p>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" role="list" aria-label="Daftar keahlian">
+
+          <!-- Skill 1: Network Routing & Switching -->
+          <div class="skill-card reveal" style="transition-delay: 0.05s;" role="listitem">
+            <div class="skill-icon" aria-hidden="true">
+              <!-- Network/routing icon: two nodes connected -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400" aria-hidden="true">
+                <rect x="1" y="9" width="4" height="4" rx="1"/>
+                <rect x="19" y="9" width="4" height="4" rx="1"/>
+                <rect x="10" y="1" width="4" height="4" rx="1"/>
+                <rect x="10" y="17" width="4" height="4" rx="1"/>
+                <line x1="5" y1="11" x2="10" y2="11"/>
+                <line x1="14" y1="11" x2="19" y2="11"/>
+                <line x1="12" y1="5" x2="12" y2="9"/>
+                <line x1="12" y1="13" x2="12" y2="17"/>
+                <circle cx="12" cy="11" r="1.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-white font-semibold text-sm leading-tight">Network Routing</p>
+              <p class="text-slate-500 text-xs mt-0.5">& Switching</p>
+            </div>
+            <div class="w-full px-2">
+              <div class="progress-bar-track" aria-hidden="true">
+                <div class="progress-bar-fill" data-width="90" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill 2: Cloud Management -->
+          <div class="skill-card reveal" style="transition-delay: 0.1s;" role="listitem">
+            <div class="skill-icon" aria-hidden="true">
+              <!-- Cloud icon - logogram without text -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400" aria-hidden="true">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                <polyline points="12 12 12 17" stroke-width="2"/>
+                <polyline points="10 15 12 17 14 15" stroke-width="2"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-white font-semibold text-sm leading-tight">Cloud</p>
+              <p class="text-slate-500 text-xs mt-0.5">Management</p>
+            </div>
+            <div class="w-full px-2">
+              <div class="progress-bar-track" aria-hidden="true">
+                <div class="progress-bar-fill" data-width="78" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill 3: Troubleshooting -->
+          <div class="skill-card reveal" style="transition-delay: 0.15s;" role="listitem">
+            <div class="skill-icon" aria-hidden="true">
+              <!-- Wrench + bug/circuit logogram -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                <path d="M4.93 4.93a10 10 0 0 0 0 14.14"/>
+                <line x1="12" y1="2" x2="12" y2="6"/>
+                <line x1="12" y1="18" x2="12" y2="22"/>
+                <line x1="2" y1="12" x2="6" y2="12"/>
+                <line x1="18" y1="12" x2="22" y2="12"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-white font-semibold text-sm leading-tight">Troubleshooting</p>
+              <p class="text-slate-500 text-xs mt-0.5">HW / SW</p>
+            </div>
+            <div class="w-full px-2">
+              <div class="progress-bar-track" aria-hidden="true">
+                <div class="progress-bar-fill" data-width="85" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill 4: Cybersecurity -->
+          <div class="skill-card reveal" style="transition-delay: 0.2s;" role="listitem">
+            <div class="skill-icon" aria-hidden="true">
+              <!-- Shield / Lock logogram -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400" aria-hidden="true">
+                <path d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11.33C17.25 23.15 21 18.25 21 13V7z"/>
+                <polyline points="9 12 11 14 15 10" stroke-width="2"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-white font-semibold text-sm leading-tight">Cybersecurity</p>
+              <p class="text-slate-500 text-xs mt-0.5">SQLi / XSS</p>
+            </div>
+            <div class="w-full px-2">
+              <div class="progress-bar-track" aria-hidden="true">
+                <div class="progress-bar-fill" data-width="72" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill 5: Ticketing Systems -->
+          <div class="skill-card reveal" style="transition-delay: 0.25s;" role="listitem">
+            <div class="skill-icon" aria-hidden="true">
+              <!-- Ticket / card logogram -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400" aria-hidden="true">
+                <path d="M2 9a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2a2 2 0 0 1 0 4v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 0-4V9z"/>
+                <line x1="9" y1="7" x2="9" y2="17" stroke-dasharray="2 2"/>
+                <line x1="12" y1="11" x2="17" y2="11"/>
+                <line x1="12" y1="14" x2="15" y2="14"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-white font-semibold text-sm leading-tight">Ticketing</p>
+              <p class="text-slate-500 text-xs mt-0.5">Systems</p>
+            </div>
+            <div class="w-full px-2">
+              <div class="progress-bar-track" aria-hidden="true">
+                <div class="progress-bar-fill" data-width="82" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Tools Row -->
+        <div class="mt-12 reveal" style="transition-delay: 0.3s;">
+          <p class="text-center text-xs text-slate-500 uppercase tracking-widest font-mono mb-6">Tools & Ekosistem</p>
+          <div class="flex flex-wrap justify-center gap-3" role="list" aria-label="Tools yang digunakan">
+            <span class="glass-card px-4 py-2 text-sm text-slate-300 flex items-center gap-2 hover:text-cyan-400 transition-colors" role="listitem">
+              <i class="fa-solid fa-gears text-cyan-400 text-xs" aria-hidden="true"></i> Mikrotik RouterOS
+            </span>
+            <span class="glass-card px-4 py-2 text-sm text-slate-300 flex items-center gap-2 hover:text-cyan-400 transition-colors" role="listitem">
+              <i class="fa-solid fa-wifi text-cyan-400 text-xs" aria-hidden="true"></i> Access Point Mgmt
+            </span>
+            <span class="glass-card px-4 py-2 text-sm text-slate-300 flex items-center gap-2 hover:text-cyan-400 transition-colors" role="listitem">
+              <i class="fa-solid fa-terminal text-cyan-400 text-xs" aria-hidden="true"></i> CLI / SSH
+            </span>
+            <span class="glass-card px-4 py-2 text-sm text-slate-300 flex items-center gap-2 hover:text-cyan-400 transition-colors" role="listitem">
+              <i class="fa-solid fa-gauge-high text-cyan-400 text-xs" aria-hidden="true"></i> SNMP Monitoring
+            </span>
+            <span class="glass-card px-4 py-2 text-sm text-slate-300 flex items-center gap-2 hover:text-cyan-400 transition-colors" role="listitem">
+              <i class="fa-solid fa-ethernet text-cyan-400 text-xs" aria-hidden="true"></i> LAN / VLAN
+            </span>
+            <span class="glass-card px-4 py-2 text-sm text-slate-300 flex items-center gap-2 hover:text-cyan-400 transition-colors" role="listitem">
+              <i class="fa-solid fa-lock text-cyan-400 text-xs" aria-hidden="true"></i> Firewall Rules
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════ -->
+  <footer class="relative py-12 px-4 border-t border-slate-800/60" role="contentinfo">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Top Row -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6 mb-8">
+        <!-- Brand -->
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-500 flex items-center justify-center font-mono font-bold text-slate-950 text-xs" aria-hidden="true">REF</div>
+          <span class="text-slate-400 text-sm font-medium">Reza Eka Firmansyah</span>
+        </div>
+
+        <!-- Social Links -->
+        <nav class="flex items-center gap-6" aria-label="Tautan sosial dan kontak">
+          <a href="https://linkedin.com/in/reza-eka-firmansyah" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="LinkedIn Reza Eka Firmansyah (buka di tab baru)">
+            <i class="fa-brands fa-linkedin text-lg" aria-hidden="true"></i>
+            <span class="text-sm">LinkedIn</span>
+          </a>
+          <a href="mailto:rezaef666@gmail.com" class="footer-link" aria-label="Kirim email ke Reza">
+            <i class="fa-solid fa-envelope text-lg" aria-hidden="true"></i>
+            <span class="text-sm">Email</span>
+          </a>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="GitHub (buka di tab baru)">
+            <i class="fa-brands fa-github text-lg" aria-hidden="true"></i>
+            <span class="text-sm">GitHub</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Divider -->
+      <div class="h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent mb-6" aria-hidden="true"></div>
+
+      <!-- Bottom Row -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-center">
+        <p class="text-slate-600 text-xs font-mono">
+          &copy; <span id="copyright-year">2024</span> Reza Eka Firmansyah. All rights reserved.
+        </p>
+        <p class="text-slate-700 text-xs font-mono flex items-center gap-1">
+          Built with
+          <i class="fa-solid fa-heart text-red-500/70 text-xs" aria-hidden="true"></i>
+          HTML · Tailwind · JS
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════════════
+       VANILLA JS
+  ══════════════════════════════════════════════════ -->
+  <script>
+    // ─── Copyright Year ───────────────────────────────
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+    // ─── Navbar scroll effect ─────────────────────────
+    const navbar = document.getElementById('navbar');
+    const navLinks = document.querySelectorAll('a.nav-link[id^="link-"]');
+    const sections = ['home', 'about', 'experience', 'skills'];
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      updateActiveLink();
+    }, { passive: true });
+
+    // ─── Active Nav Link on scroll ────────────────────
+    function updateActiveLink() {
+      let current = 'home';
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 120) {
+          current = id;
+        }
+      }
+      navLinks.forEach(link => {
+        const target = link.id.replace('link-', '');
+        link.classList.toggle('active', target === current);
+        if (target === current) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
+    }
+
+    // ─── Hamburger / Mobile Menu ──────────────────────
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu   = document.getElementById('mobile-menu');
+    const ham1 = document.getElementById('ham-1');
+    const ham2 = document.getElementById('ham-2');
+    const ham3 = document.getElementById('ham-3');
+    let menuOpen = false;
+
+    hamburgerBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      hamburgerBtn.setAttribute('aria-expanded', String(menuOpen));
+
+      if (menuOpen) {
+        ham1.style.transform = 'translateY(8px) rotate(45deg)';
+        ham2.style.opacity   = '0';
+        ham3.style.transform = 'translateY(-0px) rotate(-45deg)';
+        ham3.style.width     = '20px';
+      } else {
+        ham1.style.transform = '';
+        ham2.style.opacity   = '';
+        ham3.style.transform = '';
+        ham3.style.width     = '';
+      }
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (menuOpen) hamburgerBtn.click();
+      });
+    });
+
+    // ─── Scroll Reveal (Intersection Observer) ────────
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ─── Progress Bar Animation ───────────────────────
+    const progressBars = document.querySelectorAll('.progress-bar-fill');
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const fill = entry.target;
+          const targetWidth = fill.getAttribute('data-width');
+          requestAnimationFrame(() => {
+            fill.style.width = targetWidth + '%';
+          });
+          progressObserver.unobserve(fill);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    progressBars.forEach(bar => progressObserver.observe(bar));
+
+    // ─── Typed Text Effect ────────────────────────────
+    const phrases = [
+      'Network Engineer',
+      'IT Support Specialist',
+      'Infrastructure Builder',
+      'Problem Solver',
+    ];
+    const typedEl = document.getElementById('typed-text');
+    let phraseIndex = 0;
+    let charIndex   = 0;
+    let isDeleting  = false;
+    let typingTimer;
+
+    function type() {
+      const currentPhrase = phrases[phraseIndex];
+      if (isDeleting) {
+        typedEl.textContent = currentPhrase.slice(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typedEl.textContent = currentPhrase.slice(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let delay = isDeleting ? 50 : 90;
+
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        delay = 1800;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting  = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        delay = 350;
+      }
+
+      typingTimer = setTimeout(type, delay);
+    }
+
+    type(); // Start typing effect
+
+    // ─── Smooth Scroll polyfill fallback ─────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ─── Particle Network Canvas ──────────────────────
+    (function initParticles() {
+      const canvas = document.getElementById('particle-canvas');
+      const ctx    = canvas.getContext('2d');
+
+      // Config
+      const CONFIG = {
+        count:         90,        // number of particles
+        maxDist:       140,       // max px distance to draw a line
+        speed:         0.45,      // base speed
+        minRadius:     1.2,
+        maxRadius:     3.0,
+        mouseAttract:  180,       // attraction radius
+        attractForce:  4.0,       // pull strength
+        colors: [
+          'rgba(34,211,238,',     // cyan-400
+          'rgba(99,102,241,',     // indigo-500
+          'rgba(192,132,252,',    // purple-400
+        ],
+      };
+
+      let W, H, mouse = { x: -9999, y: -9999 };
+      let particles = [];
+      let animId;
+
+      function resize() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+      }
+
+      class Particle {
+        constructor() { this.reset(true); }
+
+        reset(initial = false) {
+          this.x    = Math.random() * W;
+          this.y    = initial ? Math.random() * H : (Math.random() > 0.5 ? -10 : H + 10);
+          this.vx   = (Math.random() - 0.5) * CONFIG.speed * 2;
+          this.vy   = (Math.random() - 0.5) * CONFIG.speed * 2;
+          this.r    = CONFIG.minRadius + Math.random() * (CONFIG.maxRadius - CONFIG.minRadius);
+          this.base = CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)];
+          this.alpha = 0.35 + Math.random() * 0.55;
+          this.pulse = Math.random() * Math.PI * 2;   // phase offset for twinkle
+          this.pulseSpeed = 0.015 + Math.random() * 0.025;
+        }
+
+        update() {
+          this.pulse += this.pulseSpeed;
+          const twinkle = Math.sin(this.pulse) * 0.15;
+
+          // Mouse attraction — partikel mengikuti kursor
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONFIG.mouseAttract && dist > 0) {
+            const force = (CONFIG.mouseAttract - dist) / CONFIG.mouseAttract * CONFIG.attractForce;
+            this.vx += (dx / dist) * force * 0.06;
+            this.vy += (dy / dist) * force * 0.06;
+          }
+
+          // Dampen velocity
+          this.vx *= 0.98;
+          this.vy *= 0.98;
+
+          // Clamp speed
+          const spd = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+          const maxSpd = CONFIG.speed * 3;
+          if (spd > maxSpd) { this.vx = this.vx / spd * maxSpd; this.vy = this.vy / spd * maxSpd; }
+
+          this.x += this.vx;
+          this.y += this.vy;
+          this.currentAlpha = Math.max(0.1, Math.min(1, this.alpha + twinkle));
+
+          // Wrap edges
+          if (this.x < -20) this.x = W + 20;
+          if (this.x > W + 20) this.x = -20;
+          if (this.y < -20) this.y = H + 20;
+          if (this.y > H + 20) this.y = -20;
+        }
+
+        draw() {
+          // Glow
+          const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r * 4);
+          grad.addColorStop(0,   this.base + (this.currentAlpha * 0.9) + ')');
+          grad.addColorStop(0.4, this.base + (this.currentAlpha * 0.4) + ')');
+          grad.addColorStop(1,   this.base + '0)');
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.r * 4, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+
+          // Core dot
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+          ctx.fillStyle = this.base + this.currentAlpha + ')';
+          ctx.fill();
+        }
+      }
+
+      function buildParticles() {
+        particles = Array.from({ length: CONFIG.count }, () => new Particle());
+      }
+
+      function drawLines() {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const a = particles[i], b = particles[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            const d  = Math.sqrt(dx * dx + dy * dy);
+            if (d < CONFIG.maxDist) {
+              const t = 1 - d / CONFIG.maxDist;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              // Blend the two particle colors
+              const lineAlpha = t * t * 0.45;
+              ctx.strokeStyle = `rgba(34,211,238,${lineAlpha})`;
+              ctx.lineWidth   = t * 1.2;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function loop() {
+        ctx.clearRect(0, 0, W, H);
+        drawLines();
+        particles.forEach(p => { p.update(); p.draw(); });
+        animId = requestAnimationFrame(loop);
+      }
+
+      // Init
+      resize();
+      buildParticles();
+      loop();
+
+      // Track mouse over the hero section only
+      const heroSection = document.getElementById('home');
+      heroSection.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      }, { passive: true });
+      heroSection.addEventListener('mouseleave', () => {
+        mouse.x = -9999;
+        mouse.y = -9999;
+      });
+
+      // Resize handler
+      const ro = new ResizeObserver(() => {
+        resize();
+        buildParticles();
+      });
+      ro.observe(canvas);
+    })();
+
+    // ─── Parallax orbs on mouse move ─────────────────
+    const orb1 = document.querySelector('.orb-1');
+    const orb2 = document.querySelector('.orb-2');
+
+    let ticking = false;
+    document.addEventListener('mousemove', (e) => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const x = (e.clientX / window.innerWidth  - 0.5) * 30;
+          const y = (e.clientY / window.innerHeight - 0.5) * 30;
+          orb1.style.transform = `translate(${x}px, ${y}px)`;
+          orb2.style.transform = `translate(${-x * 0.7}px, ${-y * 0.7}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
